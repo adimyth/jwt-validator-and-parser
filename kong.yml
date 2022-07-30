@@ -1,0 +1,12 @@
+_format_version: "2.1"
+
+services:
+    - name: echo-service
+      _comment: "localhost:8000/echo/* -> http://docker.for.mac.host.internal:8080/*"
+      url: http://docker.for.mac.host.internal:8080
+      routes:
+          - name: echo-route
+            paths:
+                - /echo
+      plugins:
+          - name: jwt-validator-and-parser

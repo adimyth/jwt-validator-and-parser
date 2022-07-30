@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+    kong:
+        container_name: kong
+        image: kong:latest
+        restart: unless-stopped
+        ports:
+            - 8000:8000/tcp
+            - 8443:8443/tcp
+        environment:
+            KONG_DATABASE: "off"
+            KONG_LOG_LEVEL: "info"
+            KONG_DECLARATIVE_CONFIG: /var/lib/kong/kong.yml
+            KONG_PLUGINS: jwt-validator-and-parser
+            KONG_PLUGINSERVER_NAMES: jwt-validator-and-parser
+            KONG_PLUGINSERVER_JWT_VALIDATOR_AND_PARSER_QUERY_CMD: /usr/local/bin/jwt-validator-and-parser -dump
+        volumes:
+            - ./kong.yml:/var/lib/kong/kong.yml
+            - ./jwt-validator-and-parser:/usr/local/bin/jwt-validator-and-parser
