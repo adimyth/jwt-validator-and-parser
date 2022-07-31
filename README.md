@@ -25,6 +25,7 @@ You can add the plugin with the following request:
 $ curl -X POST http://kong:8000/apis/{api}/plugins \
     --data "name=jwt-validator-and-parser" \
     --data "config.user_keys=first_name,last_name,role_code"
+    --data "config.jwt_secret=JWT_SECRET"
 ```
 
 | Configuration | Default                        | Possible values           | Description                       |
