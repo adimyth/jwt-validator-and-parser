@@ -38,7 +38,7 @@ func (config Config) Access(kong *pdk.PDK) {
 		for _, k := range config.UserKeys {
 			v := fmt.Sprintf("%v", claims["user"].(map[string]interface{})[k])
 			h := fmt.Sprintf("X-AUTH-%s", k)
-			_ = kong.Response.SetHeader(h, v)
+			_ = kong.ServiceRequest.SetHeader(h, v)
 		}
 	}
 }

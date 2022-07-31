@@ -2,6 +2,8 @@
 
 A kong plugin for JWT validation & parsing
 
+![Kong JWT Validator & Parser Plugin](https://imgur.com/kpTl8k6.png)
+
 ## JWT Validator
 
 ⏳ Coming soon
@@ -25,9 +27,9 @@ Set of user keys that must be appended to the request header
 
 `default` - first_name,last_name,role_code
 
-You can choose from the set of user claims. Example - `email, phone, is_active`, etc
+You can choose from the set of user claims. Example - `email, phone`, etc
 
-## Run locally
+## Deployment
 ### Production
 ```bash
 docker compose up
