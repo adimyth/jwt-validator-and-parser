@@ -1,12 +1,16 @@
 _format_version: "2.1"
 
 services:
-    - name: echo-service
-      _comment: "localhost:8000/echo/* -> http://docker.for.mac.host.internal:8080/*"
-      url: http://docker.for.mac.host.internal:8080
-      routes:
-          - name: echo-route
-            paths:
-                - /echo
-      plugins:
-          - name: jwt-validator-and-parser
+  - name: echo-service
+    _comment: "localhost:8000/echo/* -> http://docker.for.mac.host.internal:3000/*"
+    url: http://docker.for.mac.host.internal:3000
+    routes:
+      - name: echo-route
+        paths:
+          - /echo
+    plugins:
+      - name: jwt-validator-and-parser
+        config:
+          # TODO: Read JWT secret from "env"
+          jwt_secret: "JWT-SECRET"
+          user_keys: ["first_name", "last_name", "email", "phone", "role_code"]
